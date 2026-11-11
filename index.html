@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="AstroCare astronaut health and wellness monitoring demonstration dashboard.">
+  <title>AstroCare | Mission Health Console</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <a class="brand" href="#overview" aria-label="AstroCare home"><span class="brand-mark">✦</span><span><b>ASTROCARE</b><small>MISSION HEALTH SYSTEM</small></span></a>
+      <div class="side-label">FLIGHT DECK</div>
+      <nav aria-label="Main navigation">
+        <a class="nav-link active" href="#overview"><span>◫</span> Overview</a>
+        <a class="nav-link" href="#vitals"><span>♡</span> Vital telemetry</a>
+        <a class="nav-link" href="#analytics"><span>⌁</span> Health trends</a>
+        <a class="nav-link" href="#wellness"><span>◉</span> Mental wellness</a>
+        <a class="nav-link" href="#alerts"><span>△</span> Health alerts</a>
+        <a class="nav-link" href="#timeline"><span>◷</span> Mission timeline</a>
+        <a class="nav-link" href="#report"><span>▤</span> Health report</a>
+      </nav>
+      <div class="crew-card">
+        <div class="avatar">AL</div><div><strong>Alex Lee</strong><small>FLIGHT SPECIALIST</small></div><span class="crew-online"></span>
+      </div>
+      <div class="sidebar-foot"><span class="pulse-dot"></span><span>LOCAL SYSTEM<br><b>OFFLINE READY</b></span></div>
+    </aside>
+
+    <main id="overview" class="main">
+      <header class="topbar">
+        <div><div class="eyebrow">ORBITAL MEDICAL · FLIGHT 07</div><h1>Mission health console</h1></div>
+        <div class="top-actions"><div class="offline"><i></i> OFFLINE MODE</div><div class="mission-clock"><span>MISSION ELAPSED</span><b id="missionClock">DAY 090 · 14:32:08</b></div></div>
+      </header>
+
+      <section class="hero">
+        <div class="hero-copy"><div class="eyebrow cyan">ISS EXPEDITION · SIMULATION</div><h2>Good day, Alex <span>✦</span></h2><p>Your crew health overview is ready. All telemetry shown here is simulated demonstration data.</p><div class="hero-meta"><span>◉ LOW EARTH ORBIT</span><span>↗ 408 KM ALTITUDE</span><span>◎ CREW STATUS: NOMINAL</span></div></div>
+        <div class="orbit-art" aria-hidden="true"><div class="orbit-ring"></div><div class="planet">◉</div><span class="satellite">✦</span></div>
+      </section>
+
+      <section id="vitals" class="section-block">
+        <div class="section-head"><div><div class="eyebrow">LIVE TELEMETRY <span class="live-dot"></span></div><h2>Vital signs</h2><p>Automatically refreshed every 4 seconds · Illustrative values only</p></div><span class="demo-chip">● SIMULATED DATA</span></div>
+        <div class="vitals-grid">
+          <article class="vital-card"><div class="vital-top"><span>HEART RATE</span><span class="vital-icon">♡</span></div><div class="vital-value"><b id="heartRate">72</b><small>bpm</small></div><div class="vital-foot"><span class="signal" id="heartStatus">● In demo range</span><span>♥ pulse</span></div><div class="mini-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+          <article class="vital-card"><div class="vital-top"><span>OXYGEN SATURATION</span><span class="vital-icon">◉</span></div><div class="vital-value"><b id="oxygen">98</b><small>% SpO₂</small></div><div class="vital-foot"><span class="signal" id="oxygenStatus">● In demo range</span><span>O₂ level</span></div><div class="mini-bars oxygen-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+          <article class="vital-card"><div class="vital-top"><span>TEMPERATURE</span><span class="vital-icon">♨</span></div><div class="vital-value"><b id="temperature">36.8</b><small>°C</small></div><div class="vital-foot"><span class="signal" id="tempStatus">● In demo range</span><span>Core temp</span></div><div class="mini-bars temp-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+          <article class="vital-card"><div class="vital-top"><span>BLOOD PRESSURE</span><span class="vital-icon">⌁</span></div><div class="vital-value pressure-value"><b id="pressure">120/80</b><small>mmHg</small></div><div class="vital-foot"><span class="signal" id="pressureStatus">● In demo range</span><span>Systolic / diastolic</span></div><div class="mini-bars pressure-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+        </div>
+      </section>
+
+      <div class="dashboard-grid">
+        <section id="analytics" class="panel chart-panel">
+          <div class="panel-head"><div><div class="eyebrow">CREW HEALTH · LAST 12 SAMPLES</div><h2>Heart rate trend</h2></div><span class="chart-key"><i></i> Heart rate <small>bpm</small></span></div>
+          <div class="chart-wrap"><canvas id="healthChart" role="img" aria-label="Simulated heart rate trend chart"></canvas></div>
+          <div class="chart-foot"><span>Earlier samples</span><span id="chartLatest">Latest: 72 bpm</span></div>
+        </section>
+        <section id="alerts" class="panel alert-panel">
+          <div class="panel-head"><div><div class="eyebrow">EXPLAINABLE MONITORING</div><h2>Health alerts</h2></div><span class="alert-count" id="alertCount">0</span></div>
+          <div id="healthAlert" class="alert-state"><span id="alertSymbol">✓</span><div><strong id="alertTitle">All systems nominal</strong><p id="alertMessage">Simulated readings are within the demonstration thresholds.</p></div></div>
+          <div class="thresholds"><b>DEMO THRESHOLDS</b><p>Heart rate &lt;55 or &gt;100 bpm · SpO₂ &lt;95% · Temperature &gt;37.8°C · Systolic pressure &gt;140 mmHg</p></div>
+          <p class="disclaimer">Demonstration logic only. Alerts are not medical diagnoses or clinical guidance.</p>
+        </section>
+      </div>
+
+      <div class="dashboard-grid lower-grid">
+        <section id="wellness" class="panel wellness-panel">
+          <div class="panel-head"><div><div class="eyebrow">PRIVATE CREW CHECK-IN</div><h2>Mental wellness</h2><p>A quick daily self-assessment</p></div><span class="wellness-icon">☼</span></div>
+          <form id="wellnessForm">
+            <div class="form-row"><label for="mood">How are you feeling?<select id="mood" required><option value="">Choose a mood</option><option>Great</option><option>Good</option><option>Neutral</option><option>Low</option><option>Stressed</option></select></label><label for="sleep">Sleep last night <span class="unit">HOURS</span><input id="sleep" type="number" min="0" max="24" step="0.5" placeholder="e.g. 7.5" required></label></div>
+            <fieldset><legend>Current stress level</legend><div class="stress-options"><label><input type="radio" name="stress" value="1" required><span>1 <small>Low</small></span></label><label><input type="radio" name="stress" value="2"><span>2</span></label><label><input type="radio" name="stress" value="3"><span>3</span></label><label><input type="radio" name="stress" value="4"><span>4</span></label><label><input type="radio" name="stress" value="5"><span>5 <small>High</small></span></label></div></fieldset>
+            <button class="primary-button" type="submit">Save wellness check-in <span>→</span></button><p id="wellnessMessage" class="form-message" aria-live="polite"></p>
+          </form>
+          <div class="history-head"><h3>Recent check-ins</h3><span>SAVED ON THIS DEVICE</span></div><div id="wellnessHistory" class="history-list"><p class="empty-state">Your saved check-ins will appear here.</p></div>
+        </section>
+        <section id="timeline" class="panel timeline-panel">
+          <div class="panel-head"><div><div class="eyebrow">EXPEDITION 07 · 180 DAYS</div><h2>Mission timeline</h2><p>Explore the simulated expedition</p></div><span class="timeline-icon">◷</span></div>
+          <div class="timeline-stat"><span>MISSION DAY</span><strong id="missionDay">090 <small>/ 180</small></strong></div>
+          <input id="missionSlider" class="range" type="range" min="1" max="180" value="90" aria-label="Mission day">
+          <div class="range-labels"><span>LAUNCH · DAY 1</span><span>RETURN · DAY 180</span></div>
+          <div class="timeline-track"><div class="track-line"></div><div class="milestone done"><i>✓</i><span>Launch</span></div><div class="milestone active"><i>●</i><span id="milestoneCurrent">Day 90</span></div><div class="milestone"><i>◇</i><span>Return</span></div></div>
+          <div class="mission-note"><span>✦</span><p id="missionMessage">Mid-mission operations · Routine health check-in scheduled.</p></div>
+          <div class="profile-details"><div><span>MISSION</span><b>ISS Expedition 07</b></div><div><span>CREW ROLE</span><b>Flight Specialist</b></div><div><span>ORBITAL ALTITUDE</span><b>408 km</b></div></div>
+        </section>
+      </div>
+
+      <section id="report" class="panel report-panel"><div><div class="eyebrow">FLIGHT MEDICAL · CREW SUMMARY</div><h2>Astronaut health report</h2><p>Generate a printable snapshot of current simulated vitals and the latest wellness entry.</p></div><button id="printReport" class="secondary-button" type="button"><span>▤</span> Print health report</button></section>
+      <footer><span>ASTROCARE <i>·</i> OFFLINE DEMONSTRATION PROTOTYPE</span><span>Simulated data only · Not for medical use</span></footer>
+    </main>
+  </div>
+</body>
+</html>
